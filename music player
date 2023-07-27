@@ -1,0 +1,47 @@
+import os
+import pygame
+
+def play_music(music_file):
+    pygame.mixer.init()
+    pygame.mixer.music.load(music_file)
+    pygame.mixer.music.play()
+
+def pause_music():
+    pygame.mixer.music.pause()
+
+def unpause_music():
+    pygame.mixer.music.unpause()
+
+def stop_music():
+    pygame.mixer.music.stop()
+
+def main():
+    while True:
+        print("1. Play music")
+        print("2. Pause music")
+        print("3. Unpause music")
+        print("4. Stop music")
+        print("5. Exit")
+        
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            file_path = input("Enter the path of the music file: ")
+            if os.path.exists(file_path):
+                play_music(file_path)
+            else:
+                print("File not found.")
+        elif choice == 2:
+            pause_music()
+        elif choice == 3:
+            unpause_music()
+        elif choice == 4:
+            stop_music()
+        elif choice == 5:
+            pygame.mixer.quit()
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
